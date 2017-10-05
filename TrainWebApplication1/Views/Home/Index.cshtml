@@ -29,7 +29,7 @@
                 <option value="true">Pass</option>
                 <option value="false">Fail</option>
             </select><br />
-            <submit class="btn btn-primary">Submit</submit>
+            <button type="submit" class="btn btn-primary">Submit</button>
 
         </form>
     </div>
@@ -70,27 +70,27 @@
                 ]
             });
 
-           
+            $( '#newres' ).submit(function (e) {
+                e.preventDefault();
+                alert("Hi");
+                $.ajax({
+                    type: "POST",
+                    url: "/api/elresults",
+                    data: $("#newres").serialize(),
+                    success: function (data) {
+                        alert("Success");
+                        console.log(data);
+                    },
+                    error: function (data) {
+                        alert("There was a problem");
+                        console.log(data);
+                    }
+                });
+            });
 
             alert("Hello");
         });
 
-        $('#newres').submit(function (e) {
-            e.preventDefault();
-            alert("Hi");
-            $.ajax({
-                type: "POST",
-                url: "/api/elresults",
-                data: $("#newres").serialize(),
-                success: function (data) {
-                    alert("Success");
-                    console.log(data);
-                },
-                error: function (data) {
-                    alert("There was a problem");
-                    console.log(data);
-                }
-            });
-        });
+        
     </script>
 }

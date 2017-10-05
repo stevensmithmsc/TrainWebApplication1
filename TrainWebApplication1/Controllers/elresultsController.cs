@@ -7,6 +7,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using System.Web.Http.Description;
 using TrainWebApplication1.Models;
 
@@ -72,6 +73,7 @@ namespace TrainWebApplication1.Controllers
 
         // POST: api/elresults
         [ResponseType(typeof(elresult))]
+        [EnableCors(origins: "*", headers: "*", methods: "*")]
         public IHttpActionResult Postelresult(elresult elresult)
         {
             if (!ModelState.IsValid)
